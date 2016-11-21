@@ -1,6 +1,36 @@
 <?xml version="1.0"?>
    <project name="Hello World Project" default="info">
+  
+   <property name="src1.dir" value="src1.1"/>
+   <property name="src2.dir" value="src1.2"/>
+   <property name="src3.dir" value="src1.3"/>
    
+   <property name="web.dir" value="war"/>
+   <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+
+   <path id="master-classpath">
+      <fileset dir="${web.dir}/WEB-INF/lib">
+         <include name="*.jar"/>
+      </fileset>
+      <pathelement path="${build.dir}"/>
+   </path>
+
+   <target name="build" description="Compile source tree java files">
+      <mkdir dir="${build.dir}"/>
+      <javac destdir="${build.dir}" source="1.5" target="1.5">
+         <src path="${src1.dir}"/>
+         <classpath refid="master-classpath"/>
+      </javac>
+   </target>
+ 
+   <target name="clean" description="Clean output directories">
+      <delete>
+         <fileset dir="${build.dir}">
+            <include name="**/*.class"/>
+         </fileset>
+      </delete>
+   </target>
+
    <target name="info">
       <echo>Hello World - Welcome to Apache Ant!</echo>
    </target>
