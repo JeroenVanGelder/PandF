@@ -9,7 +9,7 @@
    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
 
    <path id="master-classpath">
-      <fileset dir="${web.dir}/WEB-INF/lib">
+      <fileset dir="${web.dir}/WEB-INF">
          <include name="*.jar"/>
       </fileset>
       <pathelement path="${build.dir}"/>
